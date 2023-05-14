@@ -48,14 +48,13 @@ namespace ariel {
         num_of_bullets = 6;
     }
 
-    void Cowboy::print() {
+    string Cowboy::print() {
         if(!isAlive())
         {
-            cout << "C: " << "(" << getName() << ")" << endl;
+            return "C: (" + getName() + ")" ;
         }else{
-        cout << "C: " << getName() << ", Location: ";
-        getLocation().print();
-        cout << ", Score: " << getScore() << ", Bullets: " << num_of_bullets << endl;
+
+        return "C: " + getName() + ", Location: " + getLocation().print()+ ", Score: " + std::to_string(getScore()) + ", Bullets: " + std::to_string(num_of_bullets) ;
         }
     }
     const std::type_info& Cowboy::getType() const {

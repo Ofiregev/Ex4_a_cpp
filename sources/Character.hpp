@@ -31,7 +31,7 @@ namespace ariel {
             std::string getName();
             Point getLocation();
             void setLocation(Point loc);
-            virtual void print(); 
+            virtual string print(); 
             int getScore();
             void setScore(int score);
             virtual const std::type_info& getType() const;

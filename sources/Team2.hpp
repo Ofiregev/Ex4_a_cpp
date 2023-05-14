@@ -1,21 +1,19 @@
 #ifndef TEAM2_HPP
 #define TEAM2_HPP
-#include <iostream>
-#include <string>
+
 #include "Team.hpp"
-using namespace std;
-     
+
 namespace ariel {
     class Team2 : public Team {
-        public:
-            void print() override;
-            
-
-
+        private:
+        std::array<Character*, MAX_MEMBERS> members;
+        Character* team_leader;
+    public:
+        Team2(Character* leader);
+        void add(Character* warrior) override;
+        void print() override;
+        const std::array<Character*, MAX_MEMBERS> getMembers() const override;
     };
 }
 
-    
-
-
-#endif
+#endif // TEAM2_HPP

@@ -55,13 +55,13 @@ namespace ariel
         location = loc;
     }
 
-    void Character::print()
+    string Character::print()
     {
         if(!isAlive())
         {
-            cout << "Name: (" << name << ")";
+            return "Name: (" + name + ")";
         }
-        cout << "Name: " << name << ", Score: " << score << ", Location: (" << location.getX() << "," << location.getY() << ")" << endl;
+        return "Name: " + name + ", Score: " + std::to_string(score) + ", Location: "+ location.print() ;
     }
     bool Character::getAttackedParam()
     {

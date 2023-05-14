@@ -19,7 +19,7 @@ namespace ariel {
             int getSpeed();
             void move(Character* enemy);
             void slash(Character* enemy);
-            void print() override;
+            string print() override;
             const std::type_info& getType() const override;
             //void destructor() override;
 

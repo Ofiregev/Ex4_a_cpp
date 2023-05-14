@@ -29,14 +29,16 @@ namespace ariel {
         return speed;
     }
 
-    void Ninja::print() {
+    string Ninja::print() {
          if(!isAlive())
         {
-            cout << "N: " << "(" << getName() << ")" << endl;
+            return "N: (" + getName() + ")" ;
         }else{
-        cout << "N: " << getName() << " at location ";
-        getLocation().print();
-        cout << ", with speed " << speed << " and score " << getScore() << endl;
+        return "N: " + getName() + ", Location: " + getLocation().print()+ ", Score: " + std::to_string(getScore()) + ", Speed: " + std::to_string(speed) ;
+
+        // cout << "N: " << getName() << " at location ";
+        // getLocation().print();
+        // cout << ", with speed " << speed << " and score " << getScore() << endl;
     }
     }
 }

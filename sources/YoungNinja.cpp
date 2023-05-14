@@ -1,8 +1,8 @@
-#include "YountNinja.hpp"
+#include "YoungNinja.hpp"
 
 namespace ariel {
 
-    YountNinja::YountNinja(string name, Point location) : Ninja(location, 100, name) {
+    YoungNinja::YoungNinja(string name, Point location) : Ninja(location, 100, name) {
         setSpeed(14);
     }
     // YountNinja::~YountNinja(){}

@@ -4,9 +4,9 @@
 #include <string>
 #include "Ninja.hpp"
 namespace ariel {
-    class YountNinja : public Ninja {
+    class YoungNinja : public Ninja {
         public:
-            YountNinja(string name, Point location);
+            YoungNinja(string name, Point location);
             // YountNinja(const YountNinja &other);
             // YountNinja &operator=(const YountNinja &other);
             // YountNinja(YountNinja &&other) noexcept;

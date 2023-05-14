@@ -95,7 +95,8 @@ namespace ariel
     {
         return team_leader;
     }
-    std::array<Character *, MAX_MEMBERS> Team::getMembers() const
+
+    const std::array<Character*, MAX_MEMBERS> Team::getMembers() const
     {
         return members;
     }
@@ -375,7 +376,7 @@ namespace ariel
         {
             if (members[i])
             {
-                members[i]->print();
+                cout << members[i]->print() << endl;
             }
         }
     }

@@ -15,7 +15,7 @@ namespace ariel {
             double getX();
             double getY();
             Point moveTowards(Point dest, double distance);
-            void print();
+            string print();
             string get_string_for_print();
             friend bool operator==(const Point& point1, const Point& point2);
 

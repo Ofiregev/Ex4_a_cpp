@@ -21,13 +21,10 @@ namespace ariel {
         return point_y;
     }
 
-    void Point::print() {
-        cout << "(" << point_x << "," << point_y << ")" << endl;
+    string Point::print() {
+        return "(" + std::to_string(point_x) + "," + std::to_string(point_x)+ ")" ;
     }
-    string Point::get_string_for_print()
-    {
-        return "(" + std::to_string(point_x) + "," + std::to_string(point_y) + ")" ;
-    }
+
 
 
 Point Point::moveTowards(Point dest, double distance) {
