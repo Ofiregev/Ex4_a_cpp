@@ -24,7 +24,7 @@ namespace ariel {
             virtual Character* createCopy() const = 0;
             void gotAttacked();
             bool getAttackedParam();
-            void setAttackedParam();
+            void setAttackedParam(bool attacked);
             bool isAlive();
             double distance(Character *player);
             void hit(int points);

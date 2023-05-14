@@ -18,10 +18,7 @@ namespace ariel {
         }
         return num_of_bullets;
     }
-    void Character::gotAttacked()
-    {
-        this->attacked = true;
-    }
+   
 
     void Cowboy::shoot(Character * enemy) {
         if (hasboolets() && isAlive()) {

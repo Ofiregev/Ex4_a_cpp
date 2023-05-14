@@ -65,11 +65,16 @@ namespace ariel
     }
     bool Character::getAttackedParam()
     {
-        return attacked;
+        if(attacked == false)
+        {
+            return false;
+        }else{
+            return true;
+        }
     }
-    void Character::setAttackedParam()
+    void Character::setAttackedParam(bool attacked)
     {
-        this->attacked = false;
+        this->attacked = attacked;
     }
   
 
@@ -84,6 +89,11 @@ namespace ariel
     const std::type_info& Character::getType() const {
         return typeid(Character);
     }
+    void Character::gotAttacked()
+    {
+        attacked = true;
+    }
+
      Character::~Character() = default;
 
     //Character::Character(const Character&) = default;
