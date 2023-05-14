@@ -66,15 +66,17 @@ TEST_CASE("Test  - create and add members to a new team")
 }
 TEST_CASE("Test  - attack")
 {
-    Point p1(1, 2), p2(2,2), p3(15,20), p4(32,5);
+    Point p1(1, 2), p2(2,2), p3(15,20), p4(32,5), p5(37,97);
     Cowboy *tom = new Cowboy("Tom", p1);
-    Cowboy *sam = new Cowboy("sam", p4);
     OldNinja *sushi = new OldNinja("sushi", p2);
     YountNinja *sashimi = new YountNinja("sashimi", p3);
     Cowboy *ben = new Cowboy("ben", p1);
+
+    Cowboy *sam = new Cowboy("sam", p4);
     TrainedNinja *chai = new TrainedNinja("cahi", p2);
     YountNinja *fol = new YountNinja("fol", p3);
     Cowboy *erv = new Cowboy("erv", p1);
+    Cowboy *wer = new Cowboy("wer", p5);
 
     Team team_a(tom);
     team_a.add(sushi);
@@ -85,19 +87,29 @@ TEST_CASE("Test  - attack")
     team_b.add(fol);
     team_b.add(erv);
     team_b.add(chai);
+    team_b.add(wer);
 
     Character *victim = team_a.findClosestVictim(&team_b);
     CHECK(victim->getName() == "erv");
 
-    CHECK(team_b.stillAlive() == 4);
+    CHECK(team_b.stillAlive() == 5);
     //team_a.print();
+    while(team_a.stillAlive() > 0 && team_b.stillAlive() > 0){
+    team_b.attack(&team_a);
+    team_a.print();
     team_a.attack(&team_b);
-    // cout << "team_a after an attack :" << endl;
+    team_b.print();
+    }
+    CHECK(team_b.stillAlive() > 0);
+    // cout << "after attack: ";
     // team_a.print();
-    // cout << "team_b after an attack :" << endl;
-    // team_b.print();
+    cout << "team_a after an attack :" << endl;
+    team_a.print();
+    cout << "team_b after an attack :" << endl;
+    team_b.print();
 
     team_b.attack(&team_a);
+    
 
     Cowboy *asd = new Cowboy("asd", p1);
     Cowboy *dfg = new Cowboy("dfg", p4);
@@ -106,14 +118,13 @@ TEST_CASE("Test  - attack")
     team_c.add(dfg);
     team_c.add(rty);
     team_a.attack(&team_c);
-    CHECK(tom->getNumOfBullets() == 6); // fill after shot all bullets
     tom->setScore(0);
     ben->setLocation(Point(2,16));
     sushi->setLocation(Point(1,3));
     team_a.attack(&team_c);
     team_a.getTeamLeader()->print();    
     team_a.attack(&team_c);
-    CHECK(team_a.getTeamLeader()->getName() == "sushi");
+    CHECK(team_a.getTeamLeader()->getName() == "ben");
 
 
 

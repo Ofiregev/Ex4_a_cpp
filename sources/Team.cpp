@@ -169,37 +169,34 @@ namespace ariel
 
     Character *Team::findClosestVictim(Team *enemies)
     {
-        cout << "closet victim function" << endl;
+        //cout << "closet victim function" << endl;
         double minimal_dist = 100000;
         Character *victim = nullptr;
         for (size_t i = 0; i < MAX_MEMBERS; i++)
         {
-            if (enemies->members[i] && enemies->members[i]->isAlive())
+            if (enemies->members[i] && enemies->members[i]->isAlive()&& (!enemies->members[i]->getAttackedParam()))
             {
                 double dist = enemies->members[i]->distance(team_leader);
-                cout << "attacked ?: ";
-                cout << enemies->members[i]->getAttackedParam() << endl;
-                if (dist < minimal_dist && (!enemies->members[i]->getAttackedParam()))
+
+                if (dist < minimal_dist)
                 {
                     minimal_dist = dist;
                     victim = enemies->members[i];
-                    cout << "victim is";
-                    victim->print();
+                    // cout << "victim is :" << endl;
+                    // victim->print();
                 }
             }
         }
-        cout << "chose victim :";
-        victim->print();
+        // cout << "chose victim :";
+        // victim->print();
         return victim;
     }
 
     void Team::killVictim(Team *enemies)
     {
-        cout << "victim before attack1:" << endl;
         Character *victim = findClosestVictim(enemies);
-       
-        cout << "victim before attack:";
-        victim->print();
+        // cout << "victim before attack:";
+        // victim->print();
         for (size_t i = 0; i < MAX_MEMBERS; i++)
         {
             if (members[i] && members[i]->isAlive())
@@ -209,7 +206,6 @@ namespace ariel
                     if (cowboy->hasboolets())
                     {
                         cowboy->shoot(victim);
-                        //cout << "got shot by: " << cowboy->getName() << endl;
                     }
                     else
                     {
@@ -233,34 +229,35 @@ namespace ariel
                 }
             }
         }
+        
         // cout << "victim after attack:";
         // victim->print();
-        if (!victim->isAlive())
-        {
-            cout << "victim dead, got attackes ?:";
-            victim->setAttackedParam(true);
-            if(enemies->didNotAttacked() > 0){
-            victim = findClosestVictim(enemies);
-            }
-        }
-        else
-        {
-            cout << "victim didnt dead, attacked ?:";
-            victim->setAttackedParam(true);
-            cout << victim->getAttackedParam() << endl;
-        }
+        // if (!victim->isAlive())
+        // {
+        //     //cout << "victim dead, got attackes ?:";
+        //     victim->setAttackedParam(true);
+        //     //cout <<victim->getAttackedParam() << endl;
+        // }
+        // else
+        // {
+        //     //cout << "victim didnt dead, attacked ?:";
+        //     victim->setAttackedParam(true);
+        //     //cout << victim->getAttackedParam() << endl;
+        // }
     }
     void Team::attack(Team *enemies)
     {
         if (enemies->stillAlive() == 0)
         {
-            throw("exception");
+            return;
         }
         //cout << "started the attack funtion: "<< endl;
-        while (stillAlive() > 0 && enemies->stillAlive() > 0 && enemies->didNotAttacked() > 0)
-        {
-            cout << "attacked enemies:";
-            cout << enemies->didNotAttacked() << endl;
+        // && enemies->didNotAttacked() > 0
+        // while (stillAlive() > 0 && enemies->stillAlive() > 0)
+        // {
+            if(stillAlive() > 0 && enemies->stillAlive() > 0 && enemies->didNotAttacked() > 0){
+            // cout << "didnt attacked enemies:";
+            // cout << enemies->didNotAttacked() << endl;
             if (!team_leader->isAlive())
             {
                 // Find the index of the old team leader
@@ -302,29 +299,12 @@ namespace ariel
                 members[leader_index] = temp;
             }
             killVictim(enemies);
-            //enemies->setAttackedParam();
+            // cout << "team status: " << endl;
+            // enemies->print();
         }
         enemies->setAttackedParam();
     }
 
-    // size_t Team::findClosestLivingMemberIndex()
-    // {
-    //     double minimal_dist = 100000;
-    //     size_t closest_index = SIZE_MAX;
-    //     for (size_t i = 0; i < MAX_MEMBERS; i++)
-    //     {
-    //         if (members[i] && members[i]->isAlive())
-    //         {
-    //             double distance_to_leader = members[i]->distance(team_leader);
-    //             if (distance_to_leader < minimal_dist)
-    //             {
-    //                 minimal_dist = distance_to_leader;
-    //                 closest_index = i;
-    //             }
-    //         }
-    //     }
-    //     return closest_index;
-    // }
     Character *Team::findClosestLivingMember()
     {
         double minimal_dist = 100000;
@@ -369,7 +349,7 @@ namespace ariel
         int count = 0;
         for (size_t i = 0; i < 10; i++)
         {
-            if (members[i] && !(members[i]->getAttackedParam()))
+            if (members[i] && members[i] ->isAlive()&& !(members[i]->getAttackedParam()))
             {
                 count++;
             }
