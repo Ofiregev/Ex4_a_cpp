@@ -140,12 +140,12 @@ TEST_CASE("Test 5 - Team vs Team2 ")
     team_a.add(sashimi);
     team_a.add(ben);
 
-    Team2 team_b(sam);
+    Team2 team_b(sam);//team2
     team_b.add(Ryu);
     team_b.add(Arnold);
     team_b.add(Hanzo);
     team_b.add(Erl);
     CHECK(team_b.stillAlive() == 5);
     CHECK((team_a.getMembers()[3])->getType().name() == typeid(Ninja).name()); // ninja are after cowboys
-    CHECK((team_b.getMembers()[4])->getType().name() == typeid(Cowboy).name()); // in team 2 add by order    
+    CHECK((team_b.getMembers()[4])->getType().name() == typeid(Cowboy).name()); // In team 2 add by order    
 }
