@@ -31,7 +31,7 @@ namespace ariel {
         virtual ~Team();
 
         virtual void add(Character* warrior);
-        virtual const std::array<Character*, MAX_MEMBERS> getMembers() const;
+        std::array<Character*, MAX_MEMBERS>& getMembers();
         void sortByType();
         void attack(Team* enemies);
         size_t findClosestLivingMemberIndex();
@@ -43,7 +43,7 @@ namespace ariel {
         void killVictim(Team* enemies);
         bool isCowboy(Character* warrior);
         bool isNinja(Character* warrior);
-        int stillAlive();
+        virtual int stillAlive();
         virtual void print();
     };
 }

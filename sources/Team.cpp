@@ -96,7 +96,7 @@ namespace ariel
         return team_leader;
     }
 
-    const std::array<Character*, MAX_MEMBERS> Team::getMembers() const
+     std::array<Character*, MAX_MEMBERS> &Team::getMembers() 
     {
         return members;
     }

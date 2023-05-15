@@ -95,7 +95,7 @@ TEST_CASE("Test 4 - attack")
     team_b.add(Arnold);
 
     Character *victim = team_a.findClosestVictim(&team_b);
-    CHECK(victim->getName() == "Erl");
+    CHECK(victim->getName() == "Erl"); // check if find the closest victim
     CHECK(team_b.stillAlive() == 5);
 
     while(team_a.stillAlive() > 0 && team_b.stillAlive() > 0){
@@ -145,7 +145,7 @@ TEST_CASE("Test 5 - Team vs Team2 ")
     team_b.add(Arnold);
     team_b.add(Hanzo);
     team_b.add(Erl);
-
+    CHECK(team_b.stillAlive() == 5);
     CHECK((team_a.getMembers()[3])->getType().name() == typeid(Ninja).name()); // ninja are after cowboys
     CHECK((team_b.getMembers()[4])->getType().name() == typeid(Cowboy).name()); // in team 2 add by order    
 }
